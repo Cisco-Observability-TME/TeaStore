@@ -1,5 +1,5 @@
 #!/bin/bash
-DOCKER_PLATFORMS='linux/amd64,linux/arm64'
+DOCKER_PLATFORMS='linux/amd64'
 registry=''     # e.g. 'descartesresearch/'
 
 print_usage() {
@@ -39,7 +39,7 @@ else
 	docker buildx build -t "${registry}teastore-registry" ../services/tools.descartes.teastore.registry/ --load
 	docker buildx build -t "${registry}teastore-persistence" ../services/tools.descartes.teastore.persistence/ --load
 	docker buildx build -t "${registry}teastore-image" ../services/tools.descartes.teastore.image/ --load
-	docker buildx build -t "${registry}teastore-webui" ../services/tools.descartes.teastore.webui/ --load
+	docker buildx build --platform ${DOCKER_PLATFORMS} -t "${registry}teastore-webui" ../services/tools.descartes.teastore.webui/ --load
 	docker buildx build -t "${registry}teastore-auth" ../services/tools.descartes.teastore.auth/ --load
 	docker buildx build -t "${registry}teastore-recommender" ../services/tools.descartes.teastore.recommender/ --load
 fi
