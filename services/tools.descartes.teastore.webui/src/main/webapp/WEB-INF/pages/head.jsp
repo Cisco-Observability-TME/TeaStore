@@ -7,20 +7,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+
+<script src="https://cdn.signalfx.com/o11y-gdi-rum/v0.17.0/splunk-otel-web.js" crossorigin="anonymous"></script>
+<script>
+    SplunkRum.init({
+        realm: "us1",
+        rumAccessToken: "SY8ZqV1LHQOTVKxSE7i9Dg",
+        applicationName: "teastoreOnline",
+        deploymentEnvironment: "lab"
+    });
+</script>
+<script src="https://cdn.signalfx.com/o11y-gdi-rum/v0.17.0/splunk-otel-web-session-recorder.js" crossorigin="anonymous"></script>
     <script>
-        window.adrum||(function(d) {
-            var o=adrum=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-            var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-            c.charset='utf-8';c.src='https://cdn.appdynamics.com/adrum-otel/latest/adrum.js';h.appendChild(c);
-        })(document);
-        adrum('init', {
-            appName: 'OnlineTeastore',
-            url: 'https://fso-dpp.observe.appdynamics.com',
-            sessionReplay: {
-                maskAllText: false, 
-                maskAllInputs: false,
-            },
-        });
+    SplunkSessionRecorder.init({
+      app: "teastoreOnline",
+      realm: "us1",
+      rumAccessToken: "SY8ZqV1LHQOTVKxSE7i9Dg"
+    });
     </script>
 <link rel="icon" href="<c:url value="/images/icon.ico" />" >
 <title>${title}</title>
